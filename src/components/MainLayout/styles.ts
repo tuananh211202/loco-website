@@ -14,6 +14,7 @@ export const headerStyle: React.CSSProperties = {
   borderWidth: '0 0 1px 0px',
   borderStyle: 'solid',
   borderColor: '#6a5f62',
+  backgroundColor: '#fefeff'
 }
 
 export const siderStyle: React.CSSProperties = {
@@ -21,7 +22,7 @@ export const siderStyle: React.CSSProperties = {
 }
 
 export const leftContentStyle: React.CSSProperties = {
-  width: '400px',
+  width: '50vw',
   backgroundColor: '#f0f5f9',
   color: 'black',
   padding: '0px 10px'
@@ -45,7 +46,7 @@ export const logoContainerStyle: React.CSSProperties = {
 }
 
 export const searchContainerStyle: React.CSSProperties = {
-  width: 'calc(50vw + 100px)',
+  // width: 'calc(75vw - 100px)',
   backgroundColor: '#fefeff',
   padding: '0 20px',
   display: 'flex',
@@ -58,7 +59,7 @@ export const searchStyle: React.CSSProperties = {
 
 export const avatarContainerStyle: React.CSSProperties = {
   backgroundColor: '#fefeff',
-  width: 'calc(50vw - 299px)',
+  // width: 'calc(25vw - 100px)',
   padding: '0 5px',
   borderWidth: '0 0 0 1px',
   borderStyle: 'solid',

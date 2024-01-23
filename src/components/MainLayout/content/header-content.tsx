@@ -4,16 +4,22 @@ import { PlusCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/i
 
 const { Search } = Input;
 
-export const HeaderContent = () => {
+type HeaderContentProps = {
+  firstWidth: number;
+  secondWidth: number;
+}
+
+export const HeaderContent = (props: HeaderContentProps) => {
+  const { firstWidth, secondWidth } = props;
   return (
     <>
       <div style={logoContainerStyle}>
         LOCO
       </div>
-      <div style={searchContainerStyle}>
+      <div style={{...searchContainerStyle, width: firstWidth}}>
         <Search style={searchStyle} placeholder='Search for users' />
       </div>
-      <div style={avatarContainerStyle}>
+      <div style={{...avatarContainerStyle, width: secondWidth}}>
         <Button type="link" icon={<PlusCircleOutlined style={{ fontSize: '20px' }} /> } style={{ color: 'black' }} />
         <div style={{ width: '60%', display: 'flex', alignItems: 'center' }}>
           <Avatar icon={<UserOutlined />} size={48} style={{ marginRight: '10px' }} />
