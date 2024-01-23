@@ -18,10 +18,10 @@ const SignIn = () => {
     <div>
       <Form form={form} onFinish={handleLogin}>
         <Form.Item label="Email" name="email" rules={emailRule as Rule[]}>
-          <Input />
+          <Input placeholder="Email" />
         </Form.Item>
         <Form.Item label="Password" rules={passwordRule} name="password">
-          <Input.Password />
+          <Input.Password placeholder="Password" />
         </Form.Item>
         <Form.Item style={{ display: 'flex', justifyContent: 'end' }}>
           <Button type="primary" htmlType="submit">

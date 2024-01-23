@@ -18,10 +18,10 @@ const SignUp = () => {
     <div>
       <Form form={form} onFinish={handleLogin}>
         <Form.Item label="Email" name="email" rules={emailRule as Rule[]}>
-          <Input />
+          <Input placeholder="Email" />
         </Form.Item>
         <Form.Item label="Password" rules={passwordRule} name="password">
-          <Input.Password />
+          <Input.Password placeholder="Password" />
         </Form.Item>
         <Form.Item 
           label="Confirm new password" 
@@ -38,7 +38,7 @@ const SignUp = () => {
             })
           ]}
         >
-          <Input.Password />
+          <Input.Password placeholder="Confirm Password" />
         </Form.Item>
 
         <Form.Item label="Name" name="name" rules={nameRule}>
