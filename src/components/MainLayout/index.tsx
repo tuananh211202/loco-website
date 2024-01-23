@@ -24,6 +24,8 @@ const MainLayout = () => {
       }
     }
 
+    handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return () => {

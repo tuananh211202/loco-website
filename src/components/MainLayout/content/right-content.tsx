@@ -1,6 +1,6 @@
-import { Button, Typography } from "antd"
+import { Button, Dropdown, MenuProps, Typography } from "antd"
 import { friendsContainerStyle, requestsContainerStyle } from "../styles"
-import { EllipsisOutlined, MessageOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { CheckOutlined, CloseOutlined, EllipsisOutlined, MessageOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
@@ -31,6 +31,17 @@ export const RightContent = () => {
     { 'name': 'A' },
   ];
 
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: <Button type="link" style={{ width: 'fit-content', padding: 0 }} icon={<CheckOutlined />}>Accept</Button>,
+    },
+    {
+      key: '0',
+      label: <Button type="link" style={{ width: 'fit-content', padding: 0 }} icon={<CloseOutlined />}>Decline</Button>,
+    }
+  ]
+
   return <>
     <div style={requestsContainerStyle}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -41,7 +52,9 @@ export const RightContent = () => {
         fourNewestRequest.map((request) => {
           return <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px 0px' }}>
             <div style={{ width: '80%' }}>{request.content}</div>
-            <Button type="link" icon={<EllipsisOutlined /> } style={{ color: 'black' , border: 'none' }} />
+            <Dropdown menu={{items}} placement="topLeft" trigger={['click']}>
+              <Button type="link" icon={<EllipsisOutlined /> } style={{ color: 'black' , border: 'none' }} />
+            </Dropdown>
           </div>
         })
       }
