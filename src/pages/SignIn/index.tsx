@@ -1,14 +1,37 @@
-import { Typography, Form, Input, Button } from "antd";
+import { Typography, Form, Input, Button, message } from "antd";
 import { emailRule, passwordRule } from "../../utils/input-validator";
 import { Rule } from "antd/es/form";
+import { useAuth } from "../../context/auth-context";
+import { useMutation } from "react-query";
+import { AuthApi } from "../../midlewares/api";
+import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 
 const SignIn = () => {
   const [form] = Form.useForm();
+  const { dispatch: authDispatch } = useAuth();
+  const navigate = useNavigate();
+
+  const mutateLogin = useMutation(AuthApi.signIn, {
+    onSuccess: (data) => {
+      authDispatch({
+        type: 'LOGIN',
+        payload: {
+          access_token: data.access_token,
+          user: data.user
+        }
+      });
+      navigate('/home');
+    },
+    onError: (error: any) => {
+      message.error(error.response.status);
+    }
+  });
 
   const handleLogin = () => {
-    form.submit();
+    const loginData = form.getFieldsValue();
+    mutateLogin.mutate(loginData);
   }
 
   return <div style={{ width: '400px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'black' }}>

@@ -1,7 +1,8 @@
-import { HomeOutlined, ProfileOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
+import { HomeOutlined, LogoutOutlined, ProfileOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd"
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/auth-context";
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -23,12 +24,14 @@ const items: MenuItem[] = [
     getItem('Information', '6'),
     getItem('Avatar', '7'),
     getItem('Password', '8')
-  ])
+  ]),
+  getItem('Logout', '9', <LogoutOutlined />),
 ]
 
 export const SiderContent = () => {
   const [currentKey, setCurrentKey] = useState('1'); 
   const navigate = useNavigate();
+  const { dispatch: authDispatch } = useAuth();
 
   const onClick: MenuProps['onClick'] = (keys) => {
     switch (keys.key) {
@@ -55,6 +58,10 @@ export const SiderContent = () => {
       case '8':
         navigate('/update/password');
         setCurrentKey('8');
+        return;
+      case '9':
+        authDispatch({ type: 'LOGOUT' });
+        navigate('signin');
         return;
       default: 
         return;
