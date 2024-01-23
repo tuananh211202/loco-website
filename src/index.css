@@ -1,0 +1,63 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.ant-input-search .ant-input-group input {
+  background-color: #f2f6fa !important;
+}
+
+input::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.ant-input-search-button {
+  background-color: #f2f6fa !important;
+}
+
+/* Cho các trình duyệt sử dụng thuộc tính scrollbar-width */
+.element {
+  scrollbar-width: thin;
+}
+
+/* Cho trình duyệt Chrome sử dụng thuộc tính -webkit-scrollbar */
+.element::-webkit-scrollbar {
+  width: 0;
+}
+
+.post {
+  background-color: white;
+  width: calc(100% - 20px);
+  margin: 20px 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.post:hover {
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
