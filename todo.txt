@@ -1,4 +1,3 @@
-0. 3 Setting page
 1. Use with API
 2. Profile Page: check is owner
 3. Login logout Page
