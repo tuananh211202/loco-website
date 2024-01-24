@@ -66,3 +66,8 @@ input::placeholder {
   cursor: pointer;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
+
+textarea::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}

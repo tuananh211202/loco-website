@@ -1,9 +1,27 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { passwordRule } from "../../utils/input-validator";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { UserApi } from "../../midlewares/api";
 
 export const PasswordSettingPage = () => {
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+
+  const updatePasswordMutation = useMutation(['updatePassword'], UserApi.updatePassword, {
+    onSuccess: () => {
+      message.success('Update password successfully');
+      navigate('/');
+    }
+  });
+
+  const handleUpdate = () => {
+    const { confirmPassword, ...updateData } = form.getFieldsValue();
+    updatePasswordMutation.mutate(updateData);
+  }
+
   return <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <Form style={{ width: '50%', backgroundColor: 'white', padding: '50px', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', marginBottom: '40vh' }}>
+    <Form style={{ width: '50%', backgroundColor: 'white', padding: '50px', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', marginBottom: '40vh' }} form={form} onFinish={handleUpdate}>
       <Form.Item label="Old password" name='oldPassword' rules={passwordRule}>
         <Input.Password />
       </Form.Item>
@@ -27,9 +45,11 @@ export const PasswordSettingPage = () => {
       >
         <Input.Password />
       </Form.Item>
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
-        <Button type="primary">Update</Button>
-      </div>
+      <Form.Item style={{ display: 'flex', justifyContent: 'end' }}>
+          <Button type="primary" htmlType="submit">
+            Update
+          </Button>
+        </Form.Item>
     </Form>
   </div>;
 }

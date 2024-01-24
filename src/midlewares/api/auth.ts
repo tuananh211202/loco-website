@@ -19,6 +19,9 @@ export const signIn = async (loginData: LoginData) => {
 }
 
 export const signUp = async (signupData: SignupData) => {
-  const response = await axios.post(`${BASE_URL}/auth/signup`, signupData);
+  const response = await axios.post(`${BASE_URL}/auth/signup`, {
+    ...signupData,
+    description: signupData.description ? signupData.description : '',
+  });
   return response.data;
 }

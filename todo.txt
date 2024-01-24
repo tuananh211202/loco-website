@@ -1,3 +1,19 @@
-1. Use with API
-2. Profile Page: check is owner
-4. Forgot password && change password
+
+1. Login / Logout / Signup (done)
+2. Update information (done)
+   Update avatar (done)
+   Update password (done)
+3. Post (done)
+4. Add friend (add socket)
+5. Chat
+6. Get friend with unread message + socket
+7. Post modal
+
+Sider (done)
+Header:
+  Search (done)
+  Post (done)
+  Avatar + Name (done)
+  Setting (done)
+
+Bug: after sign in/ sign up, receive blank page

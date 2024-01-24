@@ -10,7 +10,7 @@ export const UserRoutes = () => {
   return (
     <Routes>
       <Route path='/' index element={<HomePage />} />
-      <Route path='/profile' element={<ProfilePage />} />
+      <Route path='/profile/:id' element={<ProfilePage />} />
       <Route path='/people' index element={<PeoplePage />} />
       <Route path='/update/information' index element={<InfomationSettingPage />} />
       <Route path='/update/avatar' index element={<AvataSettingPage />} />
