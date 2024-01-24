@@ -29,6 +29,16 @@ export const getListFriend = async () => {
   return response.data;
 }
 
+export const getListFriendAndUnreadMessage = async () => {
+  const accessToken = Cookies.get('accessToken');
+  const response = await axios.get(`${BASE_URL}/friend-request/list-friend-and-unread`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  });
+  return response.data;
+}
+
 export const actionRequest = async (payload: {userId: number, type: string}) => {
   const { userId, type } = payload;
   const currentUser = JSON.parse(Cookies.get('user') ?? '');

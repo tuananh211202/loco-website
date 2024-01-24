@@ -70,7 +70,7 @@ const ProfilePage = () => {
   return (
     <div style={mainContentContainerStyle} className="element">
       <div style={profileContainer}>
-        <Avatar shape="square" size={120} icon={<UserOutlined />} src={imageLink(userData.avatar)} />
+        <Avatar shape="square" size={120} icon={<UserOutlined />} src={userData?.avatar.length ? imageLink(userData.avatar) : undefined} />
         <div style={{ width: 'calc(100% - 110px)', marginLeft: '10pX', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <Text strong style={{ fontSize: '24px', color: 'white' }}>{userData.name}</Text>
           <Text style={{ fontSize: '20px', color: 'white' }}>{`User ID: ${userData.userId}`}</Text>
