@@ -22,7 +22,7 @@ const SignUp = () => {
           user: data.newUser
         }
       });
-      navigate('/home');
+      navigate('/');
     },
     onError: (error: any) => {
       message.error(error.response.status);

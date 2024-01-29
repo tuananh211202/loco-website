@@ -4,6 +4,8 @@ import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 interface ChatState {
   isOpen: boolean;
   chatId: number;
+  chatAvatar: string;
+  chatName: string;
 }
 
 // Actions
@@ -15,6 +17,8 @@ type ChatAction = {
   type: string,
   payload?: {
     userId: number,
+    avatar: string,
+    name: string,
   }
 }
 
@@ -22,9 +26,9 @@ type ChatAction = {
 const authReducer = (state: ChatState, action: ChatAction): ChatState => {
   switch (action.type) {
     case OPEN:
-      return { ...state, chatId: action?.payload?.userId ?? 0, isOpen: true };
+      return { chatId: action?.payload?.userId ?? 0, isOpen: true, chatAvatar: action?.payload?.avatar ?? '', chatName: action?.payload?.name ?? '' };
     case CLOSE:
-      return { ...state, chatId: 0, isOpen: false };
+      return { ...state, chatId: 0, isOpen: false, chatAvatar: '', chatName: '' };
     default:
       return state;
   }
@@ -34,6 +38,8 @@ const authReducer = (state: ChatState, action: ChatAction): ChatState => {
 const initialState: ChatState = {
   chatId: 0,
   isOpen: false,
+  chatAvatar: '',
+  chatName: '',
 };
 
 // Khởi tạo Context

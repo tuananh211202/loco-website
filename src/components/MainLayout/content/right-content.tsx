@@ -18,8 +18,8 @@ export const RightContent = () => {
 
   const { data: listFriends } = useQuery(['listFriend'], FriendRequestApi.getListFriend);
 
-  const handleClick = (userId: number) => {
-    dispatch({ type: 'OPEN', payload: { userId } });
+  const handleClick = (userId: number, avatar: string, name: string) => {
+    dispatch({ type: 'OPEN', payload: { userId, avatar, name  } });
   }
 
   return <>
@@ -47,7 +47,7 @@ export const RightContent = () => {
           (listFriends ?? []).map((friend) => {
             return <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px 0px' }}>
               <div style={{ width: '80%' }}>{friend.name}</div>
-              <Button type="link" icon={<MessageOutlined /> } style={{ color: 'black' , border: 'none' }} onClick={() => handleClick(friend.userId)} />
+              <Button type="link" icon={<MessageOutlined /> } style={{ color: 'black' , border: 'none' }} onClick={() => handleClick(friend.userId, friend.avatar, friend.name)} />
             </div>
           })
         }

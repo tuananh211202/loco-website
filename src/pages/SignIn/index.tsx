@@ -22,7 +22,7 @@ const SignIn = () => {
           user: data.user
         }
       });
-      navigate('/home');
+      navigate('/');
     },
     onError: (error: any) => {
       message.error(error.response.status);

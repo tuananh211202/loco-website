@@ -51,7 +51,7 @@ export const PostBox = (props: PostBoxProps) => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0px 10px' }}>
         <div style={{ color: '#6a5f62' }}>
           <ClockCircleOutlined style={{ marginRight: '5px' }} />
-          10 minutes
+          {post.create_at.slice(0,16).replace('T', ' ')}
         </div>
         <div  style={{ color: '#6a5f62' }}>
           <HeartOutlined style={{ marginRight: '5px' }} /> {post?.reactCount}

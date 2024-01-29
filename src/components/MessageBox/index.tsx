@@ -5,6 +5,8 @@ import { useChat } from "../../context/chat-context";
 import { useEffect, useRef, useState } from "react";
 import { ChatApi } from "../../midlewares/api";
 import { useMutation, useQuery } from "react-query";
+import { imageLink } from "../../utils/image-link";
+import { profileLink } from "../../utils/profile-link";
 
 const { Text } = Typography;
 
@@ -31,6 +33,14 @@ const MessageBox = () => {
     }
   },[chat]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSendMessage = () => {
     if(inputValue.length) {
       sendMessageMutation.mutate({ userId: state.chatId, message: inputValue });
@@ -38,27 +48,17 @@ const MessageBox = () => {
     }
   }
 
-  // useEffect(() => {
-  //   socket.on('receiveMessage', () => {
-  //     refetch();
-  //   });
-
-  //   return () => {
-  //     socket.off('receiveMessage');
-  //   };
-  // },[]);
-
   return <div style={{...messageBoxStyles, display: state.isOpen ? 'inline' : 'none' }}>
     <div style={{ width: '100%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', height: '50px', backgroundColor: '#bebebf', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0px 5px' }}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-       <Avatar icon={<UserOutlined />} style={{ borderColor: 'white', borderRadius: '1000px' }} />
-       <Text style={{ marginLeft: '5px' }}>aaa</Text>
+       <Avatar icon={<UserOutlined />} style={{ borderColor: 'white', borderRadius: '1000px' }} src={state.chatAvatar.length ? imageLink(state.chatAvatar) : undefined} />
+       <Text strong style={{ marginLeft: '5px' }}><a href={profileLink(state.chatId)}>{state.chatName}</a></Text>
       </div>
       <Button type="link" icon={<CloseOutlined />} onClick={handleClose} />
     </div>
     <div style={{ width: '100%', height: '400px', overflowY: 'auto' }} className="element" ref={scrollableDivRef}>
       {
-        chat.map((message) => {
+        (chat ?? []).map((message) => {
           return <div style={{ width: '100%', display: 'flex', justifyContent: message.sender.userId !== state.chatId ? 'end' : 'start', padding: '5px' }}>
              <div 
                 style={{ 

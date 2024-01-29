@@ -5,7 +5,7 @@ import { imageLink } from "../../utils/image-link";
 import { useMutation, useQuery } from "react-query";
 import { PostApi } from "../../midlewares/api";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const { Text } = Typography;
 
@@ -44,6 +44,14 @@ const PostDetails = () => {
     unreactPostMutation.mutate(post?.postId) :
     reactPostMutation.mutate(post?.postId);
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return <Modal open={state.isOpen} onCancel={handleCancel} centered footer={false} closeIcon={null} style={{ maxHeight: '80%', overflowY: 'auto' }} className="element">
     <div key={post?.postId}>

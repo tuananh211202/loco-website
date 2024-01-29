@@ -32,7 +32,7 @@ export const rightContentStyle: React.CSSProperties = {
   color: 'black',
   borderWidth: '0 0 0 1px',
   borderStyle: 'solid',
-  borderColor: '#6a5f62',
+  borderColor: '#fefeff',
   backgroundColor: '#fefeff',
 };
 
@@ -63,7 +63,7 @@ export const avatarContainerStyle: React.CSSProperties = {
   padding: '0 5px',
   borderWidth: '0 0 0 1px',
   borderStyle: 'solid',
-  borderColor: 'black',
+  borderColor: '#fefeff',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',

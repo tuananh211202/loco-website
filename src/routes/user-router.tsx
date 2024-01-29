@@ -10,21 +10,6 @@ import Cookies from "js-cookie";
 export const UserRoutes = () => {
   const currentUser = JSON.parse(Cookies.get('user') ?? '');
 
-  // useEffect(() => {
-  //   if(currentUser.userId)
-  //     socket.emit('connectServer', currentUser.userId);
-  // },[currentUser.userId]);
-
-  // useEffect(() => {
-  //   socket.on('connectStatus', (status) => {
-  //     console.log(status.message);
-  //   });
-
-  //   return () => {
-  //     socket.off('connectStatus');
-  //   };
-  // }, []);
-
   return (
     <Routes>
       <Route path='/' index element={<HomePage />} />
